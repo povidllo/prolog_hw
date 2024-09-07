@@ -33,7 +33,9 @@ person('Alan').
 
 
 own('Tom', A) :- animal(_, 'brown', A); animal(_, 'black', A).
-own('Kate', A) :- animal(_, C, A), dif(C, 'white'), \+ own('Tom', A).
+own('Kate', A) :- animal('dog', C, A), dif(C, 'white'), \+ own('Tom', A).
 own('Alan', 'Mac') :- \+ own('Kate', 'Butsie'), \+ pedigree('Spot').
 
 pedigree(A) :- own(P, A), dif(P, 'Alan').
+
+answer(A) :- animal(_, _, A), \+ own('Tom', A), \+ own('Kate', A), \+ own('Alan', A).
